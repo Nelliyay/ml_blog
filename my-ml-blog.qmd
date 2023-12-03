@@ -1,11 +1,47 @@
 ---
-title: "my-ml-blog"
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "My Machine Learning Blog"
+  description: "A blog dedicated to exploring machine learning concepts, focusing on probability theory, clustering, regression, classification, and anomaly detection."
+  author: "Nelli Yayloyan"
+  execute:
+    enabled: true # Allows for code execution within the blog
+  navbar:
+    left:
+      - text: "Home"
+        href: index.html
+      - text: "Posts"
+        menu:
+          - text: "Probability Theory and Random Variables"
+            href: posts/probability-theory/index.html
+          - text: "Clustering"
+            href: posts/clustering/index.html
+          - text: "Linear and Nonlinear Regression"
+            href: posts/regression/index.html
+          - text: "Classification"
+            href: posts/classification/index.html
+          - text: "Anomaly/Outlier Detection"
+            href: posts/anomaly-detection/index.html
 ---
 
-## Quarto
+# Title of Your Blog Post
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+Write the introduction of your blog post here.
 
-```{r}
-1 + 1
+## Subsection Title
+
+Content for this subsection...
+
+```{r, echo=TRUE}
+# R code for your data analysis and visualization goes here
+# For example, a simple plot using ggplot2
+library(ggplot2)
+ggplot(mtcars, aes(x = wt, y = mpg)) +
+  geom_point() +
+  labs(title = "Plot Title", x = "Car Weight", y = "Miles per Gallon")
 ```
+
+
