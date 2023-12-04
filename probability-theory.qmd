@@ -54,6 +54,8 @@ pretty_output <- data.frame(Coefficients = coefs[,1], Std_Errors = std_errors)
 # Using kable to create a table
 kable(pretty_output, caption = "Model Coefficients and Standard Errors")
 ```
+The table below shows the coefficients from the multinomial logistic regression model, along with their standard errors. These coefficients represent the log odds of rolling each number on the die, with '1' as the reference category.
+
 
 -   **Initial Value**: 17917.59
 -   **Final Value**: 17914.21
@@ -61,7 +63,6 @@ kable(pretty_output, caption = "Model Coefficients and Standard Errors")
 -   **Residual Deviance**: 35828.42
 -   **AIC**: 35838.42
 
-The table below shows the coefficients from the multinomial logistic regression model, along with their standard errors. These coefficients represent the log odds of rolling each number on the die, with '1' as the reference category.
 
 Here are some additional details about the model's fit: - **Initial Value**: The initial log-likelihood value. - **Final Value**: The final log-likelihood value, indicating the model's fit. - **Convergence**: Indicates that the model's optimization process converged, suggesting a reliable fit. - **Residual Deviance**: Measures how well the model fits the data. - **AIC**: The Akaike Information Criterion, a measure of the model's quality.
 
