@@ -55,22 +55,15 @@ pretty_output <- data.frame(Coefficients = coefs[,1], Std_Errors = std_errors)
 kable(pretty_output, caption = "Model Coefficients and Standard Errors")
 ```
 
-- **Initial Value**: 17917.59
-- **Final Value**: 17914.21
-- **Convergence**: Yes
-- **Residual Deviance**: 35828.42
-- **AIC**: 35838.42
+-   **Initial Value**: 17917.59
+-   **Final Value**: 17914.21
+-   **Convergence**: Yes
+-   **Residual Deviance**: 35828.42
+-   **AIC**: 35838.42
 
 The table below shows the coefficients from the multinomial logistic regression model, along with their standard errors. These coefficients represent the log odds of rolling each number on the die, with '1' as the reference category.
 
-Here are some additional details about the model's fit:
-- **Initial Value**: The initial log-likelihood value.
-- **Final Value**: The final log-likelihood value, indicating the model's fit.
-- **Convergence**: Indicates that the model's optimization process converged, suggesting a reliable fit.
-- **Residual Deviance**: Measures how well the model fits the data.
-- **AIC**: The Akaike Information Criterion, a measure of the model's quality.
-
-
+Here are some additional details about the model's fit: - **Initial Value**: The initial log-likelihood value. - **Final Value**: The final log-likelihood value, indicating the model's fit. - **Convergence**: Indicates that the model's optimization process converged, suggesting a reliable fit. - **Residual Deviance**: Measures how well the model fits the data. - **AIC**: The Akaike Information Criterion, a measure of the model's quality.
 
 ```{r echo=FALSE}
 library(ggplot2)
@@ -86,6 +79,7 @@ ggplot(visualization_data, aes(x = factor(side))) +
   theme_minimal()
 
 ```
+
 ## *Alignment with Theoretical Values*
 
 A close alignment of the model's predicted probabilities with the theoretical probabilities would indicate that our model has effectively 'learned' the underlying probability distribution of a fair die roll.
@@ -105,6 +99,3 @@ In conclusion, the visualization effectively demonstrates the power of machine l
 ## *GitHub Integration*
 
 All the code and data used in this blog post are available on [GitHub](https://github.com/Nelliyay/ml_blog).
-
-
-
