@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Nelli YAyloyan">
+<meta name="author" content="Nelli Yayloyan">
 
 <title>Probability Theory and Random Variables</title>
 <style>
@@ -24,40 +24,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="probability-thoery_files/libs/clipboard/clipboard.min.js"></script>
-<script src="probability-thoery_files/libs/quarto-html/quarto.js"></script>
-<script src="probability-thoery_files/libs/quarto-html/popper.min.js"></script>
-<script src="probability-thoery_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="probability-thoery_files/libs/quarto-html/anchor.min.js"></script>
-<link href="probability-thoery_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="probability-thoery_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="probability-thoery_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="probability-thoery_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="probability-thoery_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="classification_files/libs/clipboard/clipboard.min.js"></script>
+<script src="classification_files/libs/quarto-html/quarto.js"></script>
+<script src="classification_files/libs/quarto-html/popper.min.js"></script>
+<script src="classification_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="classification_files/libs/quarto-html/anchor.min.js"></script>
+<link href="classification_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="classification_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="classification_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="classification_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="classification_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
 
-<body>
+<body class="fullcontent">
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-  <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul class="collapse">
-  <li><a href="#introduction-to-probability-theory-and-random-variables" id="toc-introduction-to-probability-theory-and-random-variables" class="nav-link active" data-scroll-target="#introduction-to-probability-theory-and-random-variables">Introduction to Probability Theory and Random Variables</a>
-  <ul class="collapse">
-  <li><a href="#simulating-dice-rolls-in-r" id="toc-simulating-dice-rolls-in-r" class="nav-link" data-scroll-target="#simulating-dice-rolls-in-r">Simulating Dice Rolls in R</a></li>
-  </ul></li>
-  <li><a href="#set-a-seed-for-reproducibility" id="toc-set-a-seed-for-reproducibility" class="nav-link" data-scroll-target="#set-a-seed-for-reproducibility">Set a seed for reproducibility</a></li>
-  <li><a href="#simulate-rolling-a-six-sided-die-1000-times" id="toc-simulate-rolling-a-six-sided-die-1000-times" class="nav-link" data-scroll-target="#simulate-rolling-a-six-sided-die-1000-times">Simulate rolling a six-sided die 1000 times</a></li>
-  <li><a href="#display-the-first-few-roll-results" id="toc-display-the-first-few-roll-results" class="nav-link" data-scroll-target="#display-the-first-few-roll-results">Display the first few roll results</a></li>
-  <li><a href="#create-a-table-of-roll-frequencies" id="toc-create-a-table-of-roll-frequencies" class="nav-link" data-scroll-target="#create-a-table-of-roll-frequencies">Create a table of roll frequencies</a></li>
-  <li><a href="#print-the-roll-frequencies" id="toc-print-the-roll-frequencies" class="nav-link" data-scroll-target="#print-the-roll-frequencies">Print the roll frequencies</a></li>
-  </ul>
-</nav>
-</div>
+
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -72,16 +56,10 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Nelli YAyloyan </p>
+             <p>Nelli Yayloyan </p>
           </div>
   </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">Invalid Date</p>
-    </div>
-  </div>
   
     
   </div>
@@ -89,34 +67,38 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="introduction-to-probability-theory-and-random-variables" class="level1">
-<h1>Introduction to Probability Theory and Random Variables</h1>
-<p>This section will introduce probability theory and its relevance to machine learning.</p>
-<section id="simulating-dice-rolls-in-r" class="level2">
-<h2 class="anchored" data-anchor-id="simulating-dice-rolls-in-r">Simulating Dice Rolls in R</h2>
-<p>We can simulate rolling a die to illustrate the concept of a random variable.</p>
+<section id="introduction-to-classification" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-to-classification">Introduction to Classification</h2>
+<p>Classification is a core task in machine learning where the goal is to predict categorical class labels of data points. It’s a type of supervised learning, meaning the model is trained on a labeled dataset. In classification, the output variable (or target) is a category, such as “spam” or “not spam” in email filtering, or “malignant” or “benign” in medical diagnoses.</p>
+<p>There are various algorithms for classification, including logistic regression, decision trees, support vector machines, and neural networks. Each has its strengths and is suitable for different types of data and problems.</p>
+<p>In this example, we’ll use a simple dataset to demonstrate a classification task. We’ll visualize the classification boundary and provide an explanation and conclusion based on the results.</p>
 </section>
+<section id="logistic-regression" class="level2">
+<h2 class="anchored" data-anchor-id="logistic-regression">Logistic Regression</h2>
+<p>Let’s consider a binary classification example using logistic regression, a fundamental classification method.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="classification_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 </section>
-<section id="set-a-seed-for-reproducibility" class="level1">
-<h1>Set a seed for reproducibility</h1>
-<p>set.seed(123)</p>
+<section id="interpretation-of-the-visualization" class="level2">
+<h2 class="anchored" data-anchor-id="interpretation-of-the-visualization"><em>Interpretation of the Visualization</em></h2>
+<p><strong>Data Points:</strong> The scatter plot shows the data points colored by their true class.</p>
+<p><strong>Decision Boundary:</strong> The black line represents the decision boundary where the model transitions from predicting one class to another. It’s the line where the model estimates a 50% probability of belonging to either class.</p>
 </section>
-<section id="simulate-rolling-a-six-sided-die-1000-times" class="level1">
-<h1>Simulate rolling a six-sided die 1000 times</h1>
-<p>dice_rolls = sample(1:6, size = 1000, replace = TRUE)</p>
+<section id="key-insights" class="level2">
+<h2 class="anchored" data-anchor-id="key-insights"><em>Key Insights</em></h2>
+<p><strong>Model Performance:</strong> The decision boundary’s alignment with the data points gives a visual indication of the model’s performance. A well-aligned boundary suggests good separation between classes.</p>
+<p><strong>Limitations:</strong> Logistic regression assumes a linear boundary, which might not be suitable for datasets with complex, non-linear relationships.</p>
 </section>
-<section id="display-the-first-few-roll-results" class="level1">
-<h1>Display the first few roll results</h1>
-<p>head(dice_rolls)</p>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion"><em>Conclusion</em></h2>
+<p>In our example, logistic regression provides a clear visual method for understanding classification. It’s effective for linearly separable data but may struggle with more complex patterns. This exercise highlights the importance of understanding both the strengths and limitations of different classification algorithms and the nature of the data when choosing an appropriate model for a classification task.</p>
 </section>
-<section id="create-a-table-of-roll-frequencies" class="level1">
-<h1>Create a table of roll frequencies</h1>
-<p>roll_frequency = table(dice_rolls)</p>
-</section>
-<section id="print-the-roll-frequencies" class="level1">
-<h1>Print the roll frequencies</h1>
-<p>roll_frequency</p>
-<hr>
+<section id="github-integration" class="level2">
+<h2 class="anchored" data-anchor-id="github-integration">GitHub Integration</h2>
+<p>All the code and data used in this blog post are available on <a href="https://github.com/Nelliyay/ml_blog">GitHub</a>.</p>
 </section>
 
 </main>

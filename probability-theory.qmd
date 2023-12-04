@@ -1,33 +1,110 @@
 ---
 title: "Probability Theory and Random Variables"
-author: "Your Name"
-date: "`r format(Sys.Date(), '%B %d, %Y')`"
-format:
+author: "Nelli Yayloyan"
+format: 
   html:
-    toc: true
-    toc-depth: 2
+    theme: cosmo 
+    toc: false
 ---
 
-# Introduction to Probability Theory and Random Variables
+# *Introduction to Probability Theory*
 
-This section will introduce probability theory and its relevance to machine learning.
+Probability theory is the mathematical framework that allows us to analyze chance events in a rigorous way. It provides the foundations for statistics, which is used across data science to infer conclusions from data and for making predictions. At the core of probability theory is the concept of a random variable, which is a variable whose possible values are numerical outcomes of a random phenomenon.
 
-## Simulating Dice Rolls in R
+## *Visualizing Probability Distributions*
 
-We can simulate rolling a die to illustrate the concept of a random variable.
+A fundamental part of probability theory is understanding probability distributions. A probability distribution describes how the values of a random variable are distributed. For example, the uniform distribution is one where all outcomes are equally likely, such as the roll of a fair die.
 
-```{r dice_simulation}
-# Set a seed for reproducibility
-set.seed(123)
+Let's visualize the probability distribution of rolling a six-sided die.
 
-# Simulate rolling a six-sided die 1000 times
-dice_rolls = sample(1:6, size = 1000, replace = TRUE)
+```{r echo=FALSE, results='hide'}
+# Simulating Die Rolls
+set.seed(123)  # Set seed for reproducibility
+rolls <- sample(1:6, 10000, replace = TRUE)
 
-# Display the first few roll results
-head(dice_rolls)
+# Frequency Analysis
+table(rolls)
 
-# Create a table of roll frequencies
-roll_frequency = table(dice_rolls)
+# Machine Learning with Multinomial Logistic Regression
+library(nnet)
+rolls_factor <- as.factor(rolls)
+model <- multinom(rolls_factor ~ 1, data = data.frame(rolls_factor))
 
-# Print the roll frequencies
-roll_frequency
+# Analyzing the Model
+summary(model)
+
+probabilities <- predict(model, type = "probs")
+mean_probabilities <- colMeans(probabilities)
+
+visualization_data <- data.frame(
+  side = 1:6,
+  theoretical = rep(1/6, 6),
+  predicted = mean_probabilities
+)
+
+library(knitr)
+
+# Assuming 'model' is your fitted model
+coefs <- summary(model)$coefficients
+std_errors <- summary(model)$standard.errors
+
+# Combining coefficients and standard errors into one data frame
+pretty_output <- data.frame(Coefficients = coefs[,1], Std_Errors = std_errors)
+
+# Using kable to create a table
+kable(pretty_output, caption = "Model Coefficients and Standard Errors")
+```
+
+- **Initial Value**: 17917.59
+- **Final Value**: 17914.21
+- **Convergence**: Yes
+- **Residual Deviance**: 35828.42
+- **AIC**: 35838.42
+
+The table below shows the coefficients from the multinomial logistic regression model, along with their standard errors. These coefficients represent the log odds of rolling each number on the die, with '1' as the reference category.
+
+Here are some additional details about the model's fit:
+- **Initial Value**: The initial log-likelihood value.
+- **Final Value**: The final log-likelihood value, indicating the model's fit.
+- **Convergence**: Indicates that the model's optimization process converged, suggesting a reliable fit.
+- **Residual Deviance**: Measures how well the model fits the data.
+- **AIC**: The Akaike Information Criterion, a measure of the model's quality.
+
+
+
+```{r echo=FALSE}
+library(ggplot2)
+
+ggplot(visualization_data, aes(x = factor(side))) +
+  geom_bar(aes(y = theoretical), stat = "identity", fill = "blue", alpha = 0.5) +
+  geom_point(aes(y = predicted, color = "Predicted"), size = 4) +
+  geom_line(aes(y = predicted, group = 1, color = "Predicted")) +
+  labs(title = "Comparing Theoretical and Predicted Probabilities of a Six-Sided Die",
+       x = "Die Side",
+       y = "Probability") +
+  scale_color_manual(values = "pink", labels = "Predicted") +
+  theme_minimal()
+
+```
+## *Alignment with Theoretical Values*
+
+A close alignment of the model's predicted probabilities with the theoretical probabilities would indicate that our model has effectively 'learned' the underlying probability distribution of a fair die roll.
+
+## *Deviation Analysis*
+
+Any significant deviation could point to potential biases in the simulation data or the model's learning process. However, minor deviations are expected due to the inherent randomness in the data and the generalization capabilities of the model.
+
+## *Model Evaluation*
+
+This comparison not only validates our model but also demonstrates the practical application of machine learning in understanding and analyzing probability distributions. It serves as an example of how machine learning can be applied to relatively simple statistical problems, providing a foundation for tackling more complex analytical tasks.
+
+## *Conclusion*
+
+In conclusion, the visualization effectively demonstrates the power of machine learning in replicating and analyzing fundamental statistical concepts, such as probability distributions. It underlines the importance of both theoretical understanding and practical machine learning approaches in the field of data science.
+
+## *GitHub Integration*
+
+All the code and data used in this blog post are available on [GitHub](https://github.com/Nelliyay/ml_blog).
+
+
+

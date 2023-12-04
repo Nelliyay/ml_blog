@@ -1,0 +1,62 @@
+---
+title: "Probability Theory and Random Variables"
+author: "Nelli Yayloyan"
+format: 
+  html:
+    theme: cosmo 
+    toc: false
+---
+
+## *Introduction to Classification*
+
+Classification is a core task in machine learning where the goal is to predict categorical class labels of data points. It's a type of supervised learning, meaning the model is trained on a labeled dataset. In classification, the output variable (or target) is a category, such as "spam" or "not spam" in email filtering, or "malignant" or "benign" in medical diagnoses.
+
+There are various algorithms for classification, including logistic regression, decision trees, support vector machines, and neural networks. Each has its strengths and is suitable for different types of data and problems.
+
+In this example, we'll use a simple dataset to demonstrate a classification task. We'll visualize the classification boundary and provide an explanation and conclusion based on the results.
+
+## *Logistic Regression*
+
+Let's consider a binary classification example using logistic regression, a fundamental classification method.
+
+```{r echo=FALSE, warning=FALSE}
+set.seed(123)
+x1 <- rnorm(100)
+x2 <- rnorm(100)
+y <- ifelse(x1 + x2 > 0, 1, 0)  # Binary target variable
+data <- data.frame(x1, x2, y)
+
+model <- glm(y ~ x1 + x2, data = data, family = "binomial")
+
+library(ggplot2)
+
+ggplot(data, aes(x = x1, y = x2, color = factor(y))) +
+  geom_point() +
+  stat_contour(aes(z = predict(model, newdata = data, type = "response")), 
+               breaks = 0.5, color = "black") +
+  labs(title = "Logistic Regression Classification Boundary",
+       x = "X1", y = "X2", color = "Class") +
+  theme_minimal()
+
+```
+
+## *Interpretation of the Visualization*
+
+**Data Points:** The scatter plot shows the data points colored by their true class.
+
+**Decision Boundary:** The black line represents the decision boundary where the model transitions from predicting one class to another. It's the line where the model estimates a 50% probability of belonging to either class.
+
+## *Key Insights*
+
+**Model Performance:** The decision boundary's alignment with the data points gives a visual indication of the model's performance. A well-aligned boundary suggests good separation between classes.
+
+**Limitations:** Logistic regression assumes a linear boundary, which might not be suitable for datasets with complex, non-linear relationships.
+
+## *Conclusion*
+
+In our example, logistic regression provides a clear visual method for understanding classification. It's effective for linearly separable data but may struggle with more complex patterns. This exercise highlights the importance of understanding both the strengths and limitations of different classification algorithms and the nature of the data when choosing an appropriate model for a classification task.
+
+
+## *GitHub Integration*
+
+All the code and data used in this blog post are available on [GitHub](https://github.com/Nelliyay/ml_blog).

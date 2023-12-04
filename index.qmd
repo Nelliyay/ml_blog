@@ -3,7 +3,7 @@ title: "My Machine Learning Blog"
 author: "Nelli Yayloyan"
 format: 
   html:
-    theme: cosmo # You can choose other themes like simplex, flatly, etc.
+    theme: cosmo 
     toc: false
 ---
 
@@ -19,7 +19,7 @@ Explore various machine learning topics:
 
 Each topic is covered in detail in its own post, complete with insights, code, and visualizations.
 
-<!-- Custom CSS for styling buttons, optional -->
+<!-- Custom CSS for styling buttons-->
 <style>
 .link-button {
   background-color: #007bff; /* Blue background */

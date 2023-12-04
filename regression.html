@@ -8,7 +8,7 @@
 
 <meta name="author" content="Nelli Yayloyan">
 
-<title>Probability Theory and Random Variables</title>
+<title>Linear and Nonlinear Regression</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,16 +24,16 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="probability-theory_files/libs/clipboard/clipboard.min.js"></script>
-<script src="probability-theory_files/libs/quarto-html/quarto.js"></script>
-<script src="probability-theory_files/libs/quarto-html/popper.min.js"></script>
-<script src="probability-theory_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="probability-theory_files/libs/quarto-html/anchor.min.js"></script>
-<link href="probability-theory_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="probability-theory_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="probability-theory_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="probability-theory_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="probability-theory_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="regression_files/libs/clipboard/clipboard.min.js"></script>
+<script src="regression_files/libs/quarto-html/quarto.js"></script>
+<script src="regression_files/libs/quarto-html/popper.min.js"></script>
+<script src="regression_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="regression_files/libs/quarto-html/anchor.min.js"></script>
+<link href="regression_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="regression_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="regression_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="regression_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="regression_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -46,7 +46,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Probability Theory and Random Variables</h1>
+<h1 class="title">Linear and Nonlinear Regression</h1>
 </div>
 
 
@@ -67,48 +67,45 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="introduction-to-probability-theory" class="level1">
-<h1><em>Introduction to Probability Theory</em></h1>
-<p>Probability theory is the mathematical framework that allows us to analyze chance events in a rigorous way. It provides the foundations for statistics, which is used across data science to infer conclusions from data and for making predictions. At the core of probability theory is the concept of a random variable, which is a variable whose possible values are numerical outcomes of a random phenomenon.</p>
-<section id="visualizing-probability-distributions" class="level2">
-<h2 class="anchored" data-anchor-id="visualizing-probability-distributions"><em>Visualizing Probability Distributions</em></h2>
-<p>A fundamental part of probability theory is understanding probability distributions. A probability distribution describes how the values of a random variable are distributed. For example, the uniform distribution is one where all outcomes are equally likely, such as the roll of a fair die.</p>
-<p>Let’s visualize the probability distribution of rolling a six-sided die.</p>
-<ul>
-<li><strong>Initial Value</strong>: 17917.59</li>
-<li><strong>Final Value</strong>: 17914.21</li>
-<li><strong>Convergence</strong>: Yes</li>
-<li><strong>Residual Deviance</strong>: 35828.42</li>
-<li><strong>AIC</strong>: 35838.42</li>
-</ul>
-<p>The table below shows the coefficients from the multinomial logistic regression model, along with their standard errors. These coefficients represent the log odds of rolling each number on the die, with ‘1’ as the reference category.</p>
-<p>Here are some additional details about the model’s fit: - <strong>Initial Value</strong>: The initial log-likelihood value. - <strong>Final Value</strong>: The final log-likelihood value, indicating the model’s fit. - <strong>Convergence</strong>: Indicates that the model’s optimization process converged, suggesting a reliable fit. - <strong>Residual Deviance</strong>: Measures how well the model fits the data. - <strong>AIC</strong>: The Akaike Information Criterion, a measure of the model’s quality.</p>
+<section id="introduction-to-linear-and-nonlinear-regression" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-to-linear-and-nonlinear-regression">Introduction to Linear and Nonlinear Regression</h2>
+<p>Regression analysis is a powerful statistical method used to model the relationship between a dependent variable and one or more independent variables. It’s a cornerstone technique in data science for prediction and analysis.</p>
+<section id="linear-regression" class="level3">
+<h3 class="anchored" data-anchor-id="linear-regression">Linear Regression</h3>
+<p>This is the simplest form of regression that assumes a linear relationship between the input variables (X) and the single output variable (Y). When there is a single input variable, it is called simple linear regression, and when there’s more than one, it is multiple linear regression.</p>
+</section>
+<section id="nonlinear-regression" class="level3">
+<h3 class="anchored" data-anchor-id="nonlinear-regression">Nonlinear Regression</h3>
+<p>In many real-world scenarios, the relationship between the variables isn’t linear. Nonlinear regression models these complex relationships where changes in the predictor lead to non-proportional changes in the response variable.</p>
+<p>In this example, we’ll first demonstrate simple linear regression with a dataset, visualize it, and then compare it with a nonlinear regression model to observe the differences.</p>
+<p><strong>Simple Linear Regression Example</strong></p>
+<p>Suppose we have a dataset with two variables, X and Y, and we suspect a linear relationship. We can model this with linear regression and visualize it.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="probability-theory_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+<p><img src="regression_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+<p>This plot will show data points and a red line representing the best-fit linear relationship between X and Y.</p>
+<p><strong>Nonlinear Regression Example</strong></p>
+<p>Now, let’s consider a scenario where the relationship is nonlinear.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="regression_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>This plot will similarly show the data points and a blue curve that best fits the nonlinear relationship.</p>
 </section>
-<section id="alignment-with-theoretical-values" class="level2">
-<h2 class="anchored" data-anchor-id="alignment-with-theoretical-values"><em>Alignment with Theoretical Values</em></h2>
-<p>A close alignment of the model’s predicted probabilities with the theoretical probabilities would indicate that our model has effectively ‘learned’ the underlying probability distribution of a fair die roll.</p>
-</section>
-<section id="deviation-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="deviation-analysis"><em>Deviation Analysis</em></h2>
-<p>Any significant deviation could point to potential biases in the simulation data or the model’s learning process. However, minor deviations are expected due to the inherent randomness in the data and the generalization capabilities of the model.</p>
-</section>
-<section id="model-evaluation" class="level2">
-<h2 class="anchored" data-anchor-id="model-evaluation"><em>Model Evaluation</em></h2>
-<p>This comparison not only validates our model but also demonstrates the practical application of machine learning in understanding and analyzing probability distributions. It serves as an example of how machine learning can be applied to relatively simple statistical problems, providing a foundation for tackling more complex analytical tasks.</p>
 </section>
 <section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion"><em>Conclusion</em></h2>
-<p>In conclusion, the visualization effectively demonstrates the power of machine learning in replicating and analyzing fundamental statistical concepts, such as probability distributions. It underlines the importance of both theoretical understanding and practical machine learning approaches in the field of data science.</p>
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>The visualizations demonstrate the key differences between linear and nonlinear regression:</p>
+<p><strong>Linear Regression:</strong> It works well when the relationship between the variables is approximately linear. The red line in the first plot shows how the model attempts to fit a straight line through the data.</p>
+<p><strong>Nonlinear Regression:</strong> It is more appropriate for data with complex relationships. The blue curve in the second plot adapts to the curvature of the data, illustrating how nonlinear models can capture more complex patterns.</p>
+<p>These examples underline the importance of understanding the underlying data patterns before choosing a regression model. While linear models are simpler and easier to interpret, nonlinear models offer flexibility to fit more intricate data trends. The choice between linear and nonlinear regression should be guided by the nature of the data and the specific analytical objectives.</p>
 </section>
 <section id="github-integration" class="level2">
-<h2 class="anchored" data-anchor-id="github-integration"><em>GitHub Integration</em></h2>
+<h2 class="anchored" data-anchor-id="github-integration">GitHub Integration</h2>
 <p>All the code and data used in this blog post are available on <a href="https://github.com/Nelliyay/ml_blog">GitHub</a>.</p>
-</section>
 </section>
 
 </main>

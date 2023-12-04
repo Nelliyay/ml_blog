@@ -1,0 +1,77 @@
+---
+title: "Linear and Nonlinear Regression"
+author: "Nelli Yayloyan"
+format: 
+  html:
+    theme: cosmo 
+    toc: false
+---
+
+## *Introduction to Linear and Nonlinear Regression*
+
+Regression analysis is a powerful statistical method used to model the relationship between a dependent variable and one or more independent variables. It's a cornerstone technique in data science for prediction and analysis.
+
+### *Linear Regression*
+
+This is the simplest form of regression that assumes a linear relationship between the input variables (X) and the single output variable (Y). When there is a single input variable, it is called simple linear regression, and when there's more than one, it is multiple linear regression.
+
+### *Nonlinear Regression*
+
+In many real-world scenarios, the relationship between the variables isn't linear. Nonlinear regression models these complex relationships where changes in the predictor lead to non-proportional changes in the response variable.
+
+
+In this example, we'll first demonstrate simple linear regression with a dataset, visualize it, and then compare it with a nonlinear regression model to observe the differences.
+
+**Simple Linear Regression Example** 
+
+Suppose we have a dataset with two variables, X and Y, and we suspect a linear relationship. We can model this with linear regression and visualize it.
+```{r echo=FALSE}
+# Sample Data
+set.seed(123)
+X <- 1:100
+Y <- 2*X + rnorm(100, mean = 0, sd = 10)  # Linear relationship with some noise
+
+# Linear Model
+linear_model <- lm(Y ~ X)
+
+# Visualization
+plot(X, Y, main = "Linear Regression", xlab = "X", ylab = "Y", pch = 19)
+abline(linear_model, col = "red")  # Adds the regression line
+
+```
+
+This plot will show data points and a red line representing the best-fit linear relationship between X and Y.
+
+**Nonlinear Regression Example**
+
+Now, let's consider a scenario where the relationship is nonlinear.
+
+```{r echo=FALSE}
+# Nonlinear Relationship
+Y_nonlinear <- 2*X^2 + rnorm(100, mean = 0, sd = 50)
+
+# Nonlinear Model (e.g., polynomial regression)
+nonlinear_model <- lm(Y_nonlinear ~ poly(X, 2))
+
+# Visualization
+plot(X, Y_nonlinear, main = "Nonlinear Regression", xlab = "X", ylab = "Y_nonlinear", pch = 19)
+lines(X, predict(nonlinear_model, list(X = X)), col = "blue")
+
+```
+
+This plot will similarly show the data points and a blue curve that best fits the nonlinear relationship.
+
+## *Conclusion*
+The visualizations demonstrate the key differences between linear and nonlinear regression:
+
+**Linear Regression:** It works well when the relationship between the variables is approximately linear. The red line in the first plot shows how the model attempts to fit a straight line through the data.
+
+
+**Nonlinear Regression:** It is more appropriate for data with complex relationships. The blue curve in the second plot adapts to the curvature of the data, illustrating how nonlinear models can capture more complex patterns.
+
+
+These examples underline the importance of understanding the underlying data patterns before choosing a regression model. While linear models are simpler and easier to interpret, nonlinear models offer flexibility to fit more intricate data trends. The choice between linear and nonlinear regression should be guided by the nature of the data and the specific analytical objectives.
+
+## *GitHub Integration*
+
+All the code and data used in this blog post are available on [GitHub](https://github.com/Nelliyay/ml_blog).

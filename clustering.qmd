@@ -1,0 +1,103 @@
+---
+title: "Understanding Clustering in Machine Learning"
+author: "Nelli Yayloyan"
+format: 
+  html:
+    theme: cosmo 
+    toc: false
+---
+
+## *Introduction to Clustering*
+
+Clustering is a fundamental technique in machine learning and data analysis, focusing on grouping a set of objects in such a way that objects in the same group (or cluster) are more similar to each other than to those in other groups. It's a method of unsupervised learning, meaning it doesn't rely on predefined categories or labels. Clustering has a wide array of applications, from customer segmentation in marketing to organizing large datasets in biology.
+
+One of the most common clustering methods is K-means clustering. This method partitions the dataset into K distinct, non-overlapping subsets (or clusters) by minimizing the within-cluster variances. However, the algorithm requires us to specify the number of clusters beforehand.
+
+In this example, we will use a simple dataset to demonstrate K-means clustering in R. We'll visualize the clusters to understand how the algorithm groups data based on inherent similarities.
+
+
+## *K-Means Clustering*
+
+**Elbow Plot**
+
+The Elbow plot is used to find the most appropriate number of clusters for K-means clustering.
+It plots the total within-cluster sum of squares (WSS) against the number of clusters (K).
+The WSS measures the compactness of the clusters and we want it to be as low as possible. It essentially tells us how close the points in each cluster are to the centroid of their cluster.
+
+```{r echo=FALSE}
+data(iris)
+iris_data <- iris[,1:4]
+
+scaled_iris <- scale(iris_data)
+
+set.seed(123)
+wss <- sapply(1:10, function(k){kmeans(scaled_iris, k, nstart = 10)$tot.withinss})
+plot(1:10, wss, type="b", pch = 19, frame = FALSE, 
+     xlab="Number of clusters K", 
+     ylab="Total within-clusters sum of squares")
+
+set.seed(123)
+fit <- kmeans(scaled_iris, 3, nstart = 10)
+iris_data$cluster <- factor(fit$cluster)
+```
+
+## *Observing the Plot*
+As the number of clusters increases, the WSS tends to decrease. This is because more clusters mean points are closer to their respective centroids.
+
+However, the reduction in WSS slows down after a certain point, creating an "elbow" in the graph. This point represents a balance between having too few and too many clusters.
+
+## *Finding the Elbow*
+In your plot, you need to look for a point after which the decrease in WSS becomes more gradual. It is not always a sharp angle but rather a point where the rate of decrease significantly slows down.
+
+The 'elbow' is typically considered the point where adding more clusters doesn't provide much better modeling of the data.
+
+## *Applying to the Iris Dataset*
+Based on your plot, you would look for the 'elbow' in the 1 to 10 range on the x-axis. The exact location of the elbow can be somewhat subjective and depends on the specific dataset and the goal of the clustering.
+
+In the analysis, you've chosen 3 clusters, which indicates that this was where you identified the elbow or determined it to be the most appropriate number of clusters for the Iris dataset.
+
+## *Conclusion*
+The Elbow plot is a valuable diagnostic tool in K-means clustering as it aids in choosing a reasonable number of clusters. This number is not always clear-cut and can depend on the context of the data and the purpose of the analysis. In your case, using 3 clusters for the Iris dataset might reflect a balance between minimizing WSS and avoiding overly fragmented clusters that don't provide meaningful insights.
+
+```{r echo=FALSE}
+library(ggplot2)
+
+ggplot(iris_data, aes(Petal.Length, Petal.Width, color = cluster)) +
+  geom_point(alpha = 0.7) +
+  labs(title = "Cluster Analysis on Iris Dataset",
+       x = "Petal Length",
+       y = "Petal Width") +
+  theme_minimal()
+
+ggplot(iris, aes(Petal.Length, Petal.Width, color = Species)) +
+  geom_point(alpha = 0.7) +
+  labs(title = "Actual Species Distribution in Iris Dataset",
+       x = "Petal Length",
+       y = "Petal Width") +
+  theme_minimal()
+
+```
+
+
+## *Analysis and Interpretation*
+
+**Cluster Visualization:** The scatter plot created from the clustering results shows how the algorithm has grouped the Iris flowers based on petal length and width. Different colors represent different clusters. If the clustering is effective, we should see distinct, non-overlapping groups that correspond well to the natural species divisions.
+
+**Comparison with Actual Species:** The second scatter plot, which colors points by the actual species of Iris flowers, serves as a reference. By comparing the clusters from our K-means algorithm with the actual species distribution, we can evaluate the performance of our clustering.
+
+## *Key Observations*
+
+**Alignment with Species:** A close alignment between our clusters and the actual species indicates that petal measurements are strong predictors of Iris species and that K-means effectively captured these natural groupings.
+
+**Discrepancies:** Any discrepancies between the clusters and the actual species might suggest either limitations in the clustering algorithm (such as its sensitivity to the choice of K or initial centroids) or variability in the data that isn't captured by petal measurements alone.
+
+## *Conclusion*
+
+The K-means algorithm was able to identify clusters that largely correspond to the actual species of Iris flowers. This outcome demonstrates the utility of K-means clustering in pattern recognition and classification problems, especially in scenarios where underlying group labels are unknown.
+The analysis underscores the importance of feature selection and scaling in clustering. The choice of petal length and width as features was pivotal in achieving meaningful clusters.
+The degree of overlap between K-means clusters and actual species can also provide insights into the natural variability within each species and the overlaps between them.
+This clustering exercise on the Iris dataset illustrates how unsupervised learning methods like K-means can be used to uncover hidden patterns and structures in data, making it a powerful tool for exploratory data analysis.
+
+## *GitHub Integration*
+
+All the code and data used in this blog post are available on [GitHub](https://github.com/Nelliyay/ml_blog).
