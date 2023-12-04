@@ -17,7 +17,7 @@ In this example, we'll use a simple statistical approach to detect anomalies in 
 
 ## Outlier Detection in a Dataset
 
-```{r echo=FALSE}
+```{r}
 set.seed(123)
 data <- rnorm(100, mean = 50, sd = 5)
 data[c(10, 20)] <- c(100, 105)  # Add outliers
@@ -39,8 +39,6 @@ ggplot(data.frame(data, outliers), aes(x = seq_along(data), y = data)) +
        x = "Index",
        y = "Value") +
   theme_minimal()
-
-
 
 ```
 

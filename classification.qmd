@@ -1,5 +1,5 @@
 ---
-title: "Probability Theory and Random Variables"
+title: "Classification"
 author: "Nelli Yayloyan"
 format: 
   html:
