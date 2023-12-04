@@ -17,7 +17,7 @@ A fundamental part of probability theory is understanding probability distributi
 
 Let's visualize the probability distribution of rolling a six-sided die.
 
-```{r echo=FALSE, results='hide'}
+```{r results='hide'}
 # Simulating Die Rolls
 set.seed(123)  # Set seed for reproducibility
 rolls <- sample(1:6, 10000, replace = TRUE)

@@ -25,7 +25,7 @@ In this example, we'll first demonstrate simple linear regression with a dataset
 **Simple Linear Regression Example** 
 
 Suppose we have a dataset with two variables, X and Y, and we suspect a linear relationship. We can model this with linear regression and visualize it.
-```{r echo=FALSE}
+```{r}
 # Sample Data
 set.seed(123)
 X <- 1:100
@@ -46,7 +46,7 @@ This plot will show data points and a red line representing the best-fit linear 
 
 Now, let's consider a scenario where the relationship is nonlinear.
 
-```{r echo=FALSE}
+```{r}
 # Nonlinear Relationship
 Y_nonlinear <- 2*X^2 + rnorm(100, mean = 0, sd = 50)
 

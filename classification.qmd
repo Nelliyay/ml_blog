@@ -19,7 +19,7 @@ In this example, we'll use a simple dataset to demonstrate a classification task
 
 Let's consider a binary classification example using logistic regression, a fundamental classification method.
 
-```{r echo=FALSE, warning=FALSE}
+```{r warning=FALSE}
 set.seed(123)
 x1 <- rnorm(100)
 x2 <- rnorm(100)

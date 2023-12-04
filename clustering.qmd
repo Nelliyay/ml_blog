@@ -24,7 +24,7 @@ The Elbow plot is used to find the most appropriate number of clusters for K-mea
 It plots the total within-cluster sum of squares (WSS) against the number of clusters (K).
 The WSS measures the compactness of the clusters and we want it to be as low as possible. It essentially tells us how close the points in each cluster are to the centroid of their cluster.
 
-```{r echo=FALSE}
+```{r}
 data(iris)
 iris_data <- iris[,1:4]
 
